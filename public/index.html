@@ -1,18 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="/css/public.css">
 </head>
+
 <body>
   <h1>欢迎来到我的主页！</h1>
   <ul class="nav">
-    <li>
-      <a href="/dogs">宠物狗</a>
-      <a href="/cats">宠物猫</a>
+    <li data-animate="dogs">
+      <a href="javascript:;">宠物狗</a>
+    </li>
+    <li data-animate="cats">
+      <a href="javascript:;">宠物猫</a>
     </li>
   </ul>
+  <section class="area-animate"></section>
 </body>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+  function getDogs(animate) {
+    $(".area-animate").hide();
+    $.get("/" + animate).then(function(res) {
+      var list = null,
+        str = "";
+      if (res.code == 200) {
+        list = res.data.result;
+        for (var i = 0; i < list.length; i++) {
+          str += '<span>' + list[i] + '</span>'
+        }
+      }
+      $(".area-animate").html(str)
+    }).then(function() {
+      $(".area-animate").fadeIn(500)
+    })
+  }
+
+  touchAnimate();
+
+  function touchAnimate() {
+    $(".nav li").mouseenter(function() {
+      var animate = $(this).data("animate");
+      getDogs(animate);
+    })
+  }
+</script>
+
 </html>

@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 var dogs = require('./routes/dogs');
+var cats = require("./routes/cats");
 
 app.all('*', function(req, res, next) {
   res.set('Access-Control-Allow-Origin', '*');
@@ -11,6 +12,7 @@ app.all('*', function(req, res, next) {
 });
 
 app.use('/dogs', dogs);
+app.use('/cats', cats);
 
 app.use(express.static('public'))
 
