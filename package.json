@@ -4,7 +4,9 @@
   "description": "node for program 1.0.0\r ```\r node install",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "supervisor -e js,html -i build -n exit -x node index.js",
+    "pm2": "pm2 start index.js -i 0"
   },
   "repository": {
     "type": "git",
