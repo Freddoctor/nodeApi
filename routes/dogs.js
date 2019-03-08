@@ -2,6 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
+var logger = require('../component/logger');
+
 router.get('/', function(req, res) {
   res.set('Content-Type', 'application/json;charset=utf-8');
   let dogs = {
@@ -12,6 +14,7 @@ router.get('/', function(req, res) {
       result: ["哈士奇", "藏獒", "贵宾犬", "松狮", "边境牧羊犬", "吉娃娃", "德国牧羊犬", "秋田犬", "柴犬"]
     }
   }
+  logger.trace(`${JSON.stringify(dogs)}`);
   res.send(JSON.stringify(dogs));
 });
 

@@ -32,4 +32,4 @@ log4js.configure({
 
 const logger = log4js.getLogger('node-pm2-web');
 
-module.exports = logger;
+module.exports= logger;

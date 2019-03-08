@@ -5,8 +5,6 @@ var dogs = require('./routes/dogs');
 var cats = require("./routes/cats");
 var logger = require('./component/logger');
 
-logger.trace(`running server now `);
-
 app.all('*', function(req, res, next) {
   res.set('Access-Control-Allow-Origin', '*');
   res.set('Access-Control-Allow-Methods', 'GET, POST');
@@ -28,7 +26,3 @@ app.get('/', function(req, res) {
 app.listen(3000, function() {
   console.info(`Example app listening on port 3000! ${new Date()}`);
 });
-
-setTimeout(() => {
-  console.error('All done, shutdown cb returned.');
-}, 5000);
