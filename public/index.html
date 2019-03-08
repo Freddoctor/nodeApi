@@ -11,6 +11,9 @@
 
 <body>
   <h1>欢迎来到我的主页！</h1>
+  <input type="text" value="" name="name">
+  <input type="text" value="" name="age">
+  <button type="button" name="button" id="btn">更新</button>
   <ul class="nav">
     <li data-animate="dogs">
       <a href="javascript:;">宠物狗</a>
@@ -20,6 +23,7 @@
     </li>
   </ul>
   <section class="area-animate"></section>
+  <div id="images"></div>
 </body>
 <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript">
@@ -48,6 +52,16 @@
       getDogs(animate);
     })
   }
+
+  $("#btn").on("click",function(){
+    var json = {
+      name:$("input[name='name']").val(),
+      age:$("input[name='age']").val()
+    }
+    $.getJSON("/dogs/add?callback=?",json,function(data) { //jsonp简化版
+      console.log(data);
+    })
+  })
 </script>
 
 </html>

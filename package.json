@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "supervisor -e js,html -i build -n exit -x node index.js",
+    "build": "node-dev --max_old_space_size=1024 --experimental-worker --inspect index.js",
     "pm2": "pm2 start index.js -i 0"
   },
   "repository": {
